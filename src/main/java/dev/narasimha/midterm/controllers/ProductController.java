@@ -34,7 +34,7 @@ public class ProductController {
         return productService.getAllCategories();
     }
 
-    @GetMapping("products/category/{category}")
+    @GetMapping("/products/category/{category}")
     public List<Product> getInCategory(@PathVariable("category") String category){
     return productService.getSingleCategories(category);
     }
@@ -42,6 +42,12 @@ public class ProductController {
     @PostMapping("/products")
     public Product CreateProduct(@RequestBody Product product) {
         return productService.addNewProduct(product);
+    }
+
+    @PutMapping("/products/{id}")
+    @PatchMapping("/products/{id}")
+    public Product UpdateProduct(@PathVariable("id") Long id, @RequestBody Product product){
+        return productService.UpdateProduct(id,product);
     }
 }
 

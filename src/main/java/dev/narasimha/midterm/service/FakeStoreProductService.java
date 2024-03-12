@@ -3,6 +3,8 @@ package dev.narasimha.midterm.service;
 import dev.narasimha.midterm.dto.FakeStoreCategoryDto;
 import dev.narasimha.midterm.dto.FakeStoreProductDto;
 import dev.narasimha.midterm.models.Product;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -122,8 +124,27 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
-    public Product UpdateProduct(Long id) {
-        return null;
+    public Product UpdateProduct(Long id, Product product1) {
+
+        FakeStoreProductDto dto = new FakeStoreProductDto();
+        dto.FakeStoreCategoryDto(product1);
+
+        restTemplate.put(
+                fakeStoreAPI+"products/"+id,
+                dto
+        );
+
+
+        Product product = new Product();
+
+        product.setId(dto.getId());
+        product.setCategory(dto.getCategory());
+        product.setTitle(dto.getTitle());
+        product.setDescription(dto.getDescription());
+        product.setPrice(dto.getPrice());
+        product.setImageURL(dto.getImage());
+
+        return product;
     }
 
     @Override
