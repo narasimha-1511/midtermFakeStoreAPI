@@ -149,6 +149,10 @@ public class FakeStoreProductService implements ProductService{
 
     @Override
     public Product DeleteProduct(Long id) {
-        return null;
+        FakeStoreProductDto fakeStoreProductDto = new FakeStoreProductDto();
+
+        restTemplate.delete(fakeStoreAPI+"products/"+id,fakeStoreProductDto);
+
+        return getSingleProduct(id);
     }
 }

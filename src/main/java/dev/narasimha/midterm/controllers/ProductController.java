@@ -49,5 +49,10 @@ public class ProductController {
     public Product UpdateProduct(@PathVariable("id") Long id, @RequestBody Product product){
         return productService.UpdateProduct(id,product);
     }
+
+    @DeleteMapping("/products/{id}")
+    public Product DeleteProduct(@PathVariable("id") Long id){
+        return productService.DeleteProduct(id);
+    }
 }
 
