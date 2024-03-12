@@ -2,6 +2,7 @@ package dev.narasimha.midterm.controllers;
 
 
 import dev.narasimha.midterm.models.Product;
+import dev.narasimha.midterm.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,7 +11,11 @@ import java.util.List;
 @RestController
 public class ProductController {
 
+    private ProductService productService;
 
+    public ProductController(ProductService productService){
+        this.productService = productService;
+    }
 
     @GetMapping("/products")
     public List<Product> GetAllProducts(){
@@ -19,8 +24,7 @@ public class ProductController {
 
     @GetMapping("/products/{id}")
     public Product getSingleProduct(@PathVariable("id") Long id){
-        System.out.println("hello");
-        return new Product();
+        return productService.getSingleProduct(id);
     }
 
     //you should recive the body of the json
