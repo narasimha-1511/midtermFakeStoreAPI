@@ -1,2 +1,4 @@
-package dev.narasimha.midterm.dto;public class FakeStoreProductDto {
+package dev.narasimha.midterm.dto;
+
+public class FakeStoreProductDto {
 }
