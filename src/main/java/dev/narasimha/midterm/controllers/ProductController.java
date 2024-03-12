@@ -28,10 +28,17 @@ public class ProductController {
         return productService.getSingleProduct(id);
     }
 
-    //you should receive the body of the json
-    //how do you do??
-    // using URL Params as you know
-    // BEst --> USe a Request Body.
+
+    @GetMapping("/products/categories")
+    public String[] getAllCategories(){
+        return productService.getAllCategories();
+    }
+
+    @GetMapping("products/{category}")
+    public List<Product> getInCategory(@PathVariable("category") String category){
+    return productService.getSingleCategories(category);
+    }
+
     @PostMapping("/products")
     public Product CreateProduct(@RequestBody Product product) {
         System.out.println("create a product");

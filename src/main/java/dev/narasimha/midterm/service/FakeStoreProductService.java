@@ -63,7 +63,12 @@ public class FakeStoreProductService implements ProductService{
 
     @Override
     public String[] getAllCategories() {
-        return new String[0];
+        String[] fakeStoreCategoryDto =  restTemplate.getForObject(
+                fakeStoreAPI+"products/categories",
+                String[].class
+        );
+
+        return fakeStoreCategoryDto;
     }
 
     @Override
