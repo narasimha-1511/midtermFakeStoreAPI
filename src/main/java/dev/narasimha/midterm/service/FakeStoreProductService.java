@@ -30,13 +30,8 @@ public class FakeStoreProductService implements ProductService{
 
         for(FakeStoreProductDto dto: fakeStoreProductDto){
 
-            Product product = new Product();
-            product.setId(dto.getId());
-            product.setCategory(dto.getCategory());
-            product.setTitle(dto.getTitle());
-            product.setDescription(dto.getDescription());
-            product.setPrice(dto.getPrice());
-            product.setImageURL(dto.getImage());
+            Product product = new Product(dto);
+
 
             products.add(product);
         }
@@ -52,13 +47,8 @@ public class FakeStoreProductService implements ProductService{
         );
 
         //we have a fake store DTO => convert to Product
-        Product product = new Product();
-        product.setId(fakeStoreProductDto.getId());
-        product.setCategory(fakeStoreProductDto.getCategory());
-        product.setTitle(fakeStoreProductDto.getTitle());
-        product.setDescription(fakeStoreProductDto.getDescription());
-        product.setPrice(fakeStoreProductDto.getPrice());
-        product.setImageURL(fakeStoreProductDto.getImage());
+        Product product = new Product(fakeStoreProductDto);
+
 
         return product;
     }
@@ -112,13 +102,8 @@ public class FakeStoreProductService implements ProductService{
                     FakeStoreProductDto.class
         );
 
-        Product product1 = new Product();
-        product1.setId(fakeStoreProductDto.getId());
-        product1.setCategory(fakeStoreProductDto.getCategory());
-        product1.setTitle(fakeStoreProductDto.getTitle());
-        product1.setDescription(fakeStoreProductDto.getDescription());
-        product1.setPrice(fakeStoreProductDto.getPrice());
-        product1.setImageURL(fakeStoreProductDto.getImage());
+        Product product1 = new Product(fakeStoreProductDto);
+
 
         return product1;
     }
