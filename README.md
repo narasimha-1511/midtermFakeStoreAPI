@@ -71,7 +71,11 @@ Here are the available endpoints and how to use them:
 
   Parameters:
   - `id`: ID of the produdct
-
+ 
+- ** Delete a Product**
+  `DELETE /products/{id}`
+  Parameters:
+  - `id`: ID of the produdct
 
 ## License
 
