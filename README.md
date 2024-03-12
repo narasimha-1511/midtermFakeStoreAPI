@@ -42,11 +42,13 @@ Here are the available endpoints and how to use them:
 
   `GET /products/`
 
+
 - **Get a Product**
 
   `GET /products/{id}`
   Parameters:
     - id of the product{int,Long}
+
 
 - **Get all Categories**
 
@@ -59,11 +61,13 @@ Here are the available endpoints and how to use them:
     Parameters:
     - category of the product{string}
 
+
 - **Create a Product**
 
   `POST /products/`
    Reqiured:
    - Response Body
+
 
 - **Update a Product**
 
@@ -71,10 +75,13 @@ Here are the available endpoints and how to use them:
 
   Parameters:
   - `id`: ID of the produdct
+
  
-- ** Delete a Product**
+- **Delete a Product**
+
   `DELETE /products/{id}`
-  Parameters:
+
+   Parameters:
   - `id`: ID of the produdct
 
 ## License
