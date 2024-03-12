@@ -34,7 +34,7 @@ public class ProductController {
         return productService.getAllCategories();
     }
 
-    @GetMapping("products/{category}")
+    @GetMapping("products/category/{category}")
     public List<Product> getInCategory(@PathVariable("category") String category){
     return productService.getSingleCategories(category);
     }
