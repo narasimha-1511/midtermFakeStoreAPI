@@ -99,7 +99,26 @@ public class FakeStoreProductService implements ProductService{
 
     @Override
     public Product addNewProduct(Product product) {
-        return null;
+        // just ignoring the id of the product as it won't be given
+
+        FakeStoreProductDto fakeStoreProductDto1 = new FakeStoreProductDto();
+        fakeStoreProductDto1.FakeStoreCategoryDto(product);
+
+        FakeStoreProductDto fakeStoreProductDto = restTemplate.postForObject(
+                fakeStoreAPI+"products",
+                    fakeStoreProductDto1,
+                    FakeStoreProductDto.class
+        );
+
+        Product product1 = new Product();
+        product1.setId(fakeStoreProductDto.getId());
+        product1.setCategory(fakeStoreProductDto.getCategory());
+        product1.setTitle(fakeStoreProductDto.getTitle());
+        product1.setDescription(fakeStoreProductDto.getDescription());
+        product1.setPrice(fakeStoreProductDto.getPrice());
+        product1.setImageURL(fakeStoreProductDto.getImage());
+
+        return product1;
     }
 
     @Override

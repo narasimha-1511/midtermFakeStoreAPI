@@ -41,10 +41,7 @@ public class ProductController {
 
     @PostMapping("/products")
     public Product CreateProduct(@RequestBody Product product) {
-        System.out.println("create a product");
-        return null;
-        // return new product
-//        return new
+        return productService.addNewProduct(product);
     }
 }
 
