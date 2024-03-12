@@ -17,9 +17,10 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/products")
+    @GetMapping("/products/")
     public List<Product> GetAllProducts(){
-        return new ArrayList<>();
+        System.out.println("working in controller");
+        return productService.getAllProducts();
     }
 
     @GetMapping("/products/{id}")
@@ -27,9 +28,9 @@ public class ProductController {
         return productService.getSingleProduct(id);
     }
 
-    //you should recive the body of the json
+    //you should receive the body of the json
     //how do you do??
-    // using URL Params as you know..
+    // using URL Params as you know
     // BEst --> USe a Request Body.
     @PostMapping("/products")
     public Product CreateProduct(@RequestBody Product product) {

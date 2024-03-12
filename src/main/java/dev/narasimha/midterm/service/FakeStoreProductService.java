@@ -6,17 +6,40 @@ import dev.narasimha.midterm.models.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
 @Service
 public class FakeStoreProductService implements ProductService{
-    private RestTemplate restTemplate = new RestTemplate();
-    private String fakeStoreAPI = "https://fakestoreapi.com/";
+    private  RestTemplate  restTemplate = new RestTemplate();
+    private  String fakeStoreAPI = "https://fakestoreapi.com/";
 
     @Override
     public List<Product> getAllProducts() {
-        return null;
+        System.out.println("inside func");
+        FakeStoreProductDto[] fakeStoreProductDto = restTemplate.getForObject(
+                fakeStoreAPI+"products/",
+                FakeStoreProductDto[].class
+        );
+
+        System.out.println("calling all the products");
+
+        List<Product> products = new ArrayList<>();
+
+        for(FakeStoreProductDto dto: fakeStoreProductDto){
+
+            Product product = new Product();
+            product.setId(dto.getId());
+            product.setCategory(dto.getCategory());
+            product.setTitle(dto.getTitle());
+            product.setDescription(dto.getDescription());
+            product.setPrice(dto.getPrice());
+            product.setImageURL(dto.getImage());
+
+            products.add(product);
+        }
+
+        return products;
     }
 
     public Product getSingleProduct(Long id) {
