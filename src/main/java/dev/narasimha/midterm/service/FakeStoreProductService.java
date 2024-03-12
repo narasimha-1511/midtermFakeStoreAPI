@@ -75,13 +75,7 @@ public class FakeStoreProductService implements ProductService{
 
         for(FakeStoreProductDto dto: fakeStoreProductDto){
 
-            Product product = new Product();
-            product.setId(dto.getId());
-            product.setCategory(dto.getCategory());
-            product.setTitle(dto.getTitle());
-            product.setDescription(dto.getDescription());
-            product.setPrice(dto.getPrice());
-            product.setImageURL(dto.getImage());
+            Product product = new Product(dto);
 
             products.add(product);
         }
@@ -120,14 +114,8 @@ public class FakeStoreProductService implements ProductService{
         );
 
 
-        Product product = new Product();
+        Product product = new Product(dto);
 
-        product.setId(dto.getId());
-        product.setCategory(dto.getCategory());
-        product.setTitle(dto.getTitle());
-        product.setDescription(dto.getDescription());
-        product.setPrice(dto.getPrice());
-        product.setImageURL(dto.getImage());
 
         return product;
     }
